@@ -1,0 +1,62 @@
+[
+    {
+        "product id": "p001",
+        "name": "iphone 11",
+        "category": "electronics",
+        "brand name": "apple",
+        "purchase price": 13000,
+        "selling price": 18000,
+        "stock quantity": 30,
+        "minimum stock": 5,
+        "supplier name": "arfat",
+        "description": "testing product"
+    },
+    {
+        "product id": "p002",
+        "name": "iphone 12",
+        "category": "electronics",
+        "brand name": "apple",
+        "purchase price": 15000,
+        "selling price": 23000,
+        "stock quantity": 45,
+        "minimum stock": 5,
+        "supplier name": "arfat",
+        "description": "testing product 2"
+    },
+    {
+        "product id": "p003",
+        "name": "iphone 13",
+        "category": "electronics",
+        "brand name": "apple",
+        "purchase price": 18000,
+        "selling price": 25000,
+        "stock quantity": 55,
+        "minimum stock": 8,
+        "supplier name": "arfat",
+        "description": "testing"
+    },
+    {
+        "product id": "p004",
+        "name": "iphone 15",
+        "category": "electronics",
+        "brand name": "apple",
+        "purchase price": 45000,
+        "selling price": 65000,
+        "stock quantity": 25,
+        "minimum stock": 5,
+        "supplier name": "tafra",
+        "description": "testing product"
+    },
+    {
+        "product id": "p005",
+        "name": "iphone 17",
+        "category": "electronics",
+        "brand name": "apple",
+        "purchase price": 65000,
+        "selling price": 89000,
+        "stock quantity": 80,
+        "minimum stock": 5,
+        "supplier name": "tafra",
+        "description": ""
+    }
+]
