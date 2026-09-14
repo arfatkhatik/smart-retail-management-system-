@@ -10,3 +10,14 @@ def load_products():
     with open("data/products.json", "r") as file:
         products = json.load(file)
     return products
+
+
+def save_customers(customers):
+    with open ("data/customers.json", "w") as file:
+        json.dump(customers, file, indent=4)
+
+
+def load_customers():
+    with open ("data/customers.json", "r") as file:
+        customers = json.load(file)
+        return customers

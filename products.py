@@ -3,7 +3,6 @@ import json
 import os
 import storage
 def product_manager():
-    while True:
         print("""
         ======================================================================================
 
@@ -34,10 +33,9 @@ def product_manager():
         elif user_input in ("5", "delete product"):
             delete_product()
         elif user_input in ("6", "back to main menu"):
-            break
+            return
         else:
             print("Invalid option.")
-
 
 def add_product():
     products = storage.load_products()
@@ -83,6 +81,7 @@ def view_product():
 
     for product in products:
         print(f"            product#{count}")
+        print("=" * 60)
         _print_product(product)
         count += 1
 
@@ -276,4 +275,3 @@ def delete_product():
             elif confirmation == "no":
                 print("canceled delitation")
                 return
-        

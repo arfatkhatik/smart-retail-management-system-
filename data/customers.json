@@ -1,0 +1,23 @@
+[
+    {
+        "customer_id": "c001",
+        "name": "arfat",
+        "email": "xyz",
+        "phone": "xyz",
+        "address": "xyz"
+    },
+    {
+        "customer_id": "c002",
+        "name": "altaf",
+        "email": "xyz",
+        "phone": "test",
+        "address": "test"
+    },
+    {
+        "customer_id": "c005",
+        "name": "shravan",
+        "email": "shravanxyz",
+        "phone": 9146522926,
+        "address": "navande"
+    }
+]

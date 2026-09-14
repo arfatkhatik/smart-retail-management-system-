@@ -47,8 +47,15 @@ print("""
 =====================================================================================
 """)
 import products
-user_option = input("enter your choice: ")
+import customers
+import cart
 while True:
+    user_option = input("enter your choice: ")
     if user_option in ("1", "product management"):
         products.product_manager()
+    elif user_option in ("2", "customer management"):
+        customers.customer_manager()
+    
+            
+            
     break

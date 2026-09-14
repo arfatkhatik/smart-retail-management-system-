@@ -58,5 +58,17 @@
         "minimum stock": 5,
         "supplier name": "tafra",
         "description": ""
+    },
+    {
+        "product id": "p006",
+        "name": "hair oil",
+        "category": "self use",
+        "brand name": "tafra",
+        "purchase price": 499,
+        "selling price": 999,
+        "stock quantity": 1000,
+        "minimum stock": 200,
+        "supplier name": "aryan",
+        "description": "testing perpose"
     }
 ]
