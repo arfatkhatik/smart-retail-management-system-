@@ -55,6 +55,8 @@ while True:
         products.product_manager()
     elif user_option in ("2", "customer management"):
         customers.customer_manager()
+    elif user_option in ("3", "shopping cart"):
+        cart.cart_manager()
     
             
             
