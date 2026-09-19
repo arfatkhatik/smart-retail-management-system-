@@ -32,12 +32,30 @@ def cart_manager():
 
 import storage
 def add_product_to_cart():
-    print("these are some category which we have...")
+    customer = get_or_create_customers()
     products = storage.load_products()
+    customer_id = customer["customer_id"]
     cart = storage.load_cart()
+
+    customer_cart = None
+
+    for saved_cart in cart:
+        if saved_cart.get("customer_id") == customer_id:
+            customer_cart = saved_cart
+            break
+
+    if customer_cart is None:
+        customer_cart = {
+            "customer_id": customer_id,
+            "items": []
+        }
+        cart.append(customer_cart)
+        storage.save_cart(cart)
+
     categories = set()
     for product in products:
         categories.add(product['category'])
+
     print("============================[ CATEGORIES ]===============================")
     print("these are the categories which we have in our store...")
     count = 1
@@ -46,8 +64,8 @@ def add_product_to_cart():
         count += 1
     print("NOTE: please enter the category name in which you want to shop...")
     print("============================================================================")
-    
-    category = input("Enter the category: ")
+
+    category = input("Enter the category: ").strip()
     
     if category in categories:
         print("these are the products which we have in this category...")
@@ -62,30 +80,37 @@ def add_product_to_cart():
                 print(f"5. product quantity: {product['stock quantity']}")
 
                 print("============================================================================")
-        product_id = input("enter product id to add product in cart: ")
-        found = False
-        for product in products:
-            if product['product id'] == product_id:
-                found = True
-                quantity = int(input("Enter quantity: "))
-                if quantity > product['stock quantity']:
-                    print("Not enough stock available")
-                    return
-                cart_item = {
-                        "product_id": product["product id"],
-                        "product name": product["name"],
-                        "price": product["selling price"],
-                        "quantity": quantity
-                }
 
-                cart.append(cart_item)
-                storage.save_cart(cart)
-                print("products added to cart successfully")
-    
+    product_id = input("Enter product ID to add to cart: ").strip()
+    found = False
 
-        if not found:
-            print("no product with that id please enter valid id ")
+    for product in products:
+        if product['product id'] == product_id:
+            found = True
+            quantity = int(input("Enter quantity: "))
+
+            if quantity <= 0:
+                print("Quantity must be greater than zero.")
+                return
+
+            if quantity > product['stock quantity']:
+                print("Not enough stock available")
+                return
+
+            cart_item = {
+                "product_id": product["product id"],
+                "product name": product["name"],
+                "price": product["selling price"],
+                "quantity": quantity
+            }
+            customer_cart["items"].append(cart_item)
+            storage.save_cart(cart)
+            print("product added to cart successfully")
             return
+
+    if not found:
+        print("No product with that ID. Please enter a valid ID.")
+        return
 
 def remove_cart():
     cart = storage.load_cart()
@@ -140,4 +165,33 @@ def total_cart():
     print("      YOUR GRAND TOTAL IS:")
     print(f"           ₹{total}")
     print("=" * 50)
-   
+
+
+def get_or_create_customers():
+    customers = storage.load_customers()
+
+    customer_id = input("Enter your customer ID: ")
+    found = False
+    for customer in customers:
+        if customer['customer_id'] == customer_id:
+            found = True
+            return customer
+    if not found :
+        print("Customer not found. let's create a new customer.")
+        name = input("Enter customer name: ")
+        email = input("Enter customer email: ")
+        phone = input("Enter customer phone: ")
+        address = input("Enter customer address: ")
+
+        customer = {
+            "customer_id": customer_id,
+            "customer_name": name,
+            "email": email,
+            "phone": phone,
+            "address": address
+            }
+
+        customers.append(customer)
+        storage.save_customers(customers)
+        return customer
+        

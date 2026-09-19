@@ -70,5 +70,17 @@
         "minimum stock": 200,
         "supplier name": "aryan",
         "description": "testing perpose"
+    },
+    {
+        "product id": "p010",
+        "name": "iphone 18",
+        "category": "electronics",
+        "brand name": "apple",
+        "purchase price": 120000,
+        "selling price": 180000,
+        "stock quantity": 45,
+        "minimum stock": 5,
+        "supplier name": "arfat ",
+        "description": "testing "
     }
 ]
