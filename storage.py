@@ -30,3 +30,12 @@ def load_cart():
     with open("data/cart.json", "r") as file:
         cart = json.load(file)
         return cart
+
+def save_order(orders):
+    with open("data/orders.json", "w") as file:
+        json.dump(orders, file, indent = 4)
+
+def load_orders():
+    with open("data/orders.json", "r") as file:
+        orders = json.load(file)
+        return orders

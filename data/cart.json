@@ -1,43 +1,17 @@
 [
     {
-        "product_id": "p004",
-        "product name": "iphone 15",
-        "price": 65000,
-        "quantity": 20
-    },
-    {
-        "customer_id": "c001",
+        "customer_id": "c003",
         "items": [
             {
-                "product_id": "p006",
-                "product name": "hair oil",
-                "price": 999,
-                "quantity": 650
-            },
-            {
-                "product_id": "p004",
-                "product name": "iphone 15",
-                "price": 65000,
-                "quantity": 15
-            },
-            {
-                "product_id": "p004",
-                "product name": "iphone 15",
-                "price": 65000,
-                "quantity": 15
-            },
-            {
-                "product_id": "p004",
-                "product name": "iphone 15",
-                "price": 65000,
-                "quantity": 15
-            },
-            {
-                "product_id": "p010",
-                "product name": "iphone 18",
-                "price": 180000,
-                "quantity": 15
+                "product_id": "p005",
+                "product name": "iphone 17",
+                "price": 89000,
+                "quantity": 45
             }
         ]
+    },
+    {
+        "customer_id": "c002",
+        "items": []
     }
 ]

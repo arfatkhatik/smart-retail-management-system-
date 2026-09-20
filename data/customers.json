@@ -19,5 +19,12 @@
         "email": "shravanxyz",
         "phone": 9146522926,
         "address": "navande"
+    },
+    {
+        "customer_id": "c003",
+        "customer_name": "C:\\Users\\Admin\\AppData\\Local\\Python\\pythoncore-3.14-64\\python.exe \"c:/Users/Admin/Desktop/SMART RETAIL MANAGEMENT SYSTEM/main.py\"",
+        "email": "shivaakattimani",
+        "phone": "9000500090",
+        "address": "khopoli"
     }
 ]

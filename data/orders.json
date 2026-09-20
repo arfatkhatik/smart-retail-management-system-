@@ -1,0 +1,16 @@
+[
+    {
+        "order_id": "o01",
+        "customer_id": "c002",
+        "items": [
+            {
+                "product_id": "p010",
+                "product name": "iphone 18",
+                "price": 180000,
+                "quantity": 30
+            }
+        ],
+        "total_amount": 5400000,
+        "status": "Confirmed"
+    }
+]
