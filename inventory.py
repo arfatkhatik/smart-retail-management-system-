@@ -24,6 +24,12 @@ def inventry_manager():
         check_low_stock()
     elif user_option in ("4", "check out of stock product"):
         out_of_stock()
+    elif user_option in ("5", "adjust stock"):
+        adjust_stock()
+    elif user_option in ("6", "back to main menu"):
+        return
+    else:
+        print("Invalid option.")
 
 def view_inventory():
     products = storage.load_products()
@@ -101,3 +107,31 @@ def out_of_stock():
         return
             
 
+def adjust_stock():
+    products = storage.load_products()
+    product_id = input("Enter product id: ")
+    found = False
+
+    for product in products:
+        if product["product id"] == product_id:
+            found = True
+            print("=" * 50)
+            print(f"product ID: {product['product id']}")
+            print(f"product name: {product['name']}")
+            print(f"current stock: {product['stock quantity']}")
+            print("-" * 50)
+
+            new_stock = int(input("Enter new stock adjustment: "))
+            current_stock = product['stock quantity']
+            product['stock quantity'] = new_stock
+
+            print(f"previous stock: {current_stock}")
+            print(f"New stock quantity: {new_stock}")
+            storage.save_products(products)
+            print("stock adjusted successfully.")
+
+            break
+
+    if not found:
+        print("Product not found.")
+        return

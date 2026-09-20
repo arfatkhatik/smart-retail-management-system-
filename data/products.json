@@ -42,7 +42,7 @@
         "brand name": "apple",
         "purchase price": 45000,
         "selling price": 65000,
-        "stock quantity": 25,
+        "stock quantity": 50,
         "minimum stock": 5,
         "supplier name": "tafra",
         "description": "testing product"
@@ -54,7 +54,7 @@
         "brand name": "apple",
         "purchase price": 65000,
         "selling price": 89000,
-        "stock quantity": 80,
+        "stock quantity": 120,
         "minimum stock": 5,
         "supplier name": "tafra",
         "description": ""
@@ -66,7 +66,7 @@
         "brand name": "tafra",
         "purchase price": 499,
         "selling price": 999,
-        "stock quantity": 150,
+        "stock quantity": 500,
         "minimum stock": 200,
         "supplier name": "aryan",
         "description": "testing perpose"
