@@ -78,7 +78,7 @@
         "brand name": "apple",
         "purchase price": 120000,
         "selling price": 180000,
-        "stock quantity": -15,
+        "stock quantity": 30,
         "minimum stock": 5,
         "supplier name": "arfat ",
         "description": "testing "

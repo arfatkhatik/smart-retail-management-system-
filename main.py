@@ -37,7 +37,7 @@ print("""
     2. customer management
     3. shopping cart
     4. order management
-    5. inventry management
+    5. inventory management
     6. sales & analytics
     7. search
     8. report
@@ -50,6 +50,7 @@ import products
 import customers
 import cart
 import orders
+import inventory
 while True:
     user_option = input("enter your choice: ")
     if user_option in ("1", "product management"):
@@ -60,6 +61,8 @@ while True:
         cart.cart_manager()
     elif user_option in ("4", "order managemenr"):
         orders.create_order()
+    elif user_option in ("5", "inventory management"):
+        inventory.inventry_manager()
     
             
             

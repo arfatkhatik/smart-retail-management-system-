@@ -39,3 +39,4 @@ def load_orders():
     with open("data/orders.json", "r") as file:
         orders = json.load(file)
         return orders
+
