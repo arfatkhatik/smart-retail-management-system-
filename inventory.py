@@ -20,6 +20,8 @@ def inventry_manager():
         view_inventory()
     elif user_option in ("2", "restock product"):
         restock_product()
+    elif user_option in ("3", "check low stock"):
+        check_low_stock()
 
 def view_inventory():
     products = storage.load_products()
@@ -59,3 +61,21 @@ def restock_product():
     if not found:
         print("product not found")
         return
+
+
+def check_low_stock():
+    products = storage.load_products()
+    found = False
+    for product in products:
+        if product['stock quantity'] <= product['minimum stock']:
+            found = True
+            print("=" * 50)
+            print(f"product ID: {product['product id']}")
+            print(f"product name: {product['name']}")
+            print(f"current stock: {product['stock quantity']}")
+            print(f"minimum quantity: {product['minimum stock']}")
+            print("-" * 50)
+    if not found:
+        print("No low-stock products.")
+        return
+

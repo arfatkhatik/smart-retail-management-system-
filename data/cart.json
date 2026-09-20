@@ -13,5 +13,9 @@
     {
         "customer_id": "c002",
         "items": []
+    },
+    {
+        "customer_id": "c001",
+        "items": []
     }
 ]

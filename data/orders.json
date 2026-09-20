@@ -12,5 +12,19 @@
         ],
         "total_amount": 5400000,
         "status": "Confirmed"
+    },
+    {
+        "order_id": "o02",
+        "customer_id": "c001",
+        "items": [
+            {
+                "product_id": "p006",
+                "product name": "hair oil",
+                "price": 999,
+                "quantity": 850
+            }
+        ],
+        "total_amount": 849150,
+        "status": "Confirmed"
     }
 ]
