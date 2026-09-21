@@ -18,6 +18,8 @@ def sales_manager():
     user_option = input("Enter your option: ").lower().strip()
     if user_option in ("1", "sales overview"):
         sales_overview()
+    elif user_option in ("2", "product sales"):
+        products_sales()
 
 def sales_overview():
     orders = storage.load_orders()
@@ -45,3 +47,37 @@ def sales_overview():
     print(f"total unit sold: {total_unit}")
     print(f"average order value: {average_order}")
     print("=" * 50)
+
+
+def products_sales():
+    orders = storage.load_orders()
+    if not orders:
+        print("No order found.")
+        return
+
+    product_sales_data = {}
+    for order in orders:
+        for item in order["items"]:
+            product_id = item["product_id"]
+
+            if product_id not in product_sales_data:
+                product_sales_data[product_id] = {
+                    "product_name": item["product name"],
+                    "quantity": 0,
+                    "revenue": 0
+                }
+            product_sales_data[product_id]['quantity'] += item["quantity"]
+            sale_amount = item["price"] * item["quantity"]
+            product_sales_data[product_id]["revenue"] += (
+                sale_amount
+            )
+    print("=" * 50)
+    print("             PRODUCT SALES")
+    print("=" * 50)
+
+    for product_id, data in product_sales_data.items():
+        print(f"Product ID: {product_id}")
+        print(f"Product Name: {data['product_name']}")
+        print(f"Units Sold: {data['quantity']}")
+        print(f"Revenue: ₹{data['revenue']}")
+        print("-" * 50)
