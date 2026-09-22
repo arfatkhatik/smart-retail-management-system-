@@ -22,7 +22,8 @@ def sales_manager():
         products_sales()
     elif user_option in ("3", "category sales"):
         category_sales()
-
+    elif user_option in ("4", "customer analysics"):
+        customer_analytics()
 def sales_overview():
     orders = storage.load_orders()
 
@@ -115,3 +116,36 @@ def category_sales():
         print(f"Units Sold: {data['quantity']}")
         print(f"Revenue: ₹{data['revenue']}")
         print("-" * 50)
+
+
+def customer_analytics():
+    orders = storage.load_orders()
+    if not orders:
+        print("No order Found.")
+        return
+    customer_data = {}
+    for order in orders:
+        customer_id = order["customer_id"]
+        if customer_id not in customer_data:
+            customer_data[customer_id]= {
+            "orders": 0,
+            "units": 0, 
+            "spend": 0
+            }
+        customer_data[customer_id]["orders"] += 1
+        for item in order["items"]:
+            customer_data[customer_id]["units"] += item["quantity"]
+            customer_data[customer_id]["spend"] += (
+                item["price"] * item["quantity"]
+            )
+    print("=" * 50)
+    print("          CUSTOMER ANALYTICS")
+    print("=" * 50)
+
+    for customer_id, data in customer_data.items():
+        print(f"Customer ID: {customer_id}")
+        print(f"Orders: {data['orders']}")
+        print(f"Units Purchased: {data['units']}")
+        print(f"Total Spent: ₹{data['spend']}")
+        print("-" * 50)
+
