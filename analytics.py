@@ -26,6 +26,10 @@ def sales_manager():
         customer_analytics()
     elif user_option in ("5", "profit analytics"):
         profit_analytics()
+    elif user_option in ("6", "back to main menu"):
+        return
+    else:
+        print("Ivalid option.")
 def sales_overview():
     orders = storage.load_orders()
 
