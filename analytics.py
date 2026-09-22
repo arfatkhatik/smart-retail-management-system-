@@ -20,6 +20,8 @@ def sales_manager():
         sales_overview()
     elif user_option in ("2", "product sales"):
         products_sales()
+    elif user_option in ("3", "category sales"):
+        category_sales()
 
 def sales_overview():
     orders = storage.load_orders()
@@ -78,6 +80,38 @@ def products_sales():
     for product_id, data in product_sales_data.items():
         print(f"Product ID: {product_id}")
         print(f"Product Name: {data['product_name']}")
+        print(f"Units Sold: {data['quantity']}")
+        print(f"Revenue: ₹{data['revenue']}")
+        print("-" * 50)
+
+
+def category_sales():
+    orders = storage.load_orders()
+    if not orders:
+        print("No order found.")
+        return
+    products = storage.load_products()
+    category_sales_data = {}
+    for order in orders:
+        for item in order["items"]:
+            for product in products:
+                if product["product id"] == item["product_id"]:
+                    category = product["category"]
+                    if category not in category_sales_data:
+                        category_sales_data[category] = {
+                            "quantity": 0,
+                            "revenue": 0
+                        }
+                    category_sales_data[category]["quantity"] += item["quantity"]
+                    category_sales_data[category]["revenue"] += (
+                        item["price"] * item["quantity"]
+                    )
+                    break
+    print("=" * 50)
+    print("         CATEGORY SALES")
+    print("=" * 50)
+    for category, data in category_sales_data.items():
+        print(f"category: {category}")
         print(f"Units Sold: {data['quantity']}")
         print(f"Revenue: ₹{data['revenue']}")
         print("-" * 50)
