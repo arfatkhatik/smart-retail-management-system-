@@ -24,6 +24,8 @@ def sales_manager():
         category_sales()
     elif user_option in ("4", "customer analysics"):
         customer_analytics()
+    elif user_option in ("5", "profit analytics"):
+        profit_analytics()
 def sales_overview():
     orders = storage.load_orders()
 
@@ -149,3 +151,45 @@ def customer_analytics():
         print(f"Total Spent: ₹{data['spend']}")
         print("-" * 50)
 
+
+def profit_analytics():
+    orders = storage.load_orders()
+    if not orders:
+        print("No order found.")
+        return
+    products = storage.load_products()
+
+    profit_data = {}
+
+    for order in orders:
+        for item in order["item"]:
+            for product in products:
+                if product["product id"] == item["product_id"]:
+                    product_id = product["product id"]
+
+                    if product_id not in profit_data:
+                        profit_data[product_id] = {
+                            "product name": product["name"],
+                            "quantity": 0,
+                            "profit": 0
+                        }
+
+                    profit_data[product_id]["quantity"] += item["quantity"]
+                    profit = (
+                        product["selling price"] - product["purchase price"]
+                    ) * item["quantity"]
+
+                    profit_data[product_id]["profit"] += profit
+
+                    break
+
+    print("=" * 50)
+    print("             PROFIT ANALYTICS")
+    print("=" * 50)
+
+    for product_id , data in profit_data.items():
+        print(f"product Id: {product_id}")
+        print(f"product name: {data["product_name"]}")
+        print(f"Units Sold: {data['quantity']}")
+        print(f"Profit: ₹{data['profit']}")
+        print("-" * 50)
