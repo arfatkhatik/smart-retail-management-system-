@@ -18,6 +18,8 @@ def search():
     user_option = input("Enter your option: ")
     if user_option in ("1", "search products"):
         search_products()
+    elif user_option in ("2", "search customers"):
+        search_customers()
 
 def search_products():
     products = storage.load_products()
@@ -66,6 +68,58 @@ def search_products():
             print(f"Stock: {product['stock quantity']}")
             print("=" * 50)
 
-        if not found:
-            print("No matching product found.")
-            return
+    if not found:
+        print("No matching product found.")
+        return
+
+
+def search_customers():
+    customers = storage.load_customers()
+    if not customers:
+        print("No customer found.")
+        return
+    print("=" * 40)
+    print("         SEARCH CUSTOMERS")
+    print("=" * 40)
+            
+    print("1. customer id")
+    print("2. name")
+    print("3. phone")
+    print("4. email")
+    print("5. address")
+    print("=" * 40)
+
+
+    option = input("Enter your option: ")
+
+    search_field = {
+        "1": "customer_id",
+        "2": "name",
+        "3": "phone",
+        "4": "email",
+        "5": "address"
+    }
+    search_field = search_field.get(option)
+
+    if search_field is None:
+        print("invalid option.")
+        return
+
+    search_value = input(f"Enter {search_field} to search: ").lower().strip()
+
+    found = False
+
+    for customer in customers:
+        if search_value in str(customer[search_field]).lower():
+            found = True
+            print("=" * 50)
+            print(f"customer ID: {customer['customer_id']}")
+            print(f"customer name: {customer['name']}")
+            print(f"customer Phone: {customer['phone']}")
+            print(f"customer Email: {customer['email']}")
+            print(f"customer address: {customer['address']}")
+            print("=" * 50)
+
+    if not found:
+        print("No matching customer found.")
+        return

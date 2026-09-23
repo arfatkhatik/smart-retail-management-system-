@@ -69,7 +69,7 @@ while True:
     elif user_option in ("6", "sales an analytics"):
         analytics.sales_manager()
     elif user_option in ("7", "search"):
-        search.search_products()
+        search.search()
     
             
             
