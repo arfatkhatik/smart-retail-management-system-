@@ -9,8 +9,7 @@ def search():
 
         1. Search Products
         2. Search Customers
-        3. Search Orders
-        4. Back
+        3. back
 
     ========================================
     """)
@@ -20,6 +19,10 @@ def search():
         search_products()
     elif user_option in ("2", "search customers"):
         search_customers()
+    elif user_option in ("3", "back"):
+        return
+    else:
+        print("invalid option")
 
 def search_products():
     products = storage.load_products()
