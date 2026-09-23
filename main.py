@@ -4,6 +4,7 @@ import cart
 import orders
 import inventory
 import analytics
+import search
 
 print("""
 ====================================================================================
@@ -67,6 +68,8 @@ while True:
         inventory.inventry_manager()
     elif user_option in ("6", "sales an analytics"):
         analytics.sales_manager()
+    elif user_option in ("7", "search"):
+        search.search_products()
     
             
             
