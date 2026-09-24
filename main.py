@@ -5,6 +5,7 @@ import orders
 import inventory
 import analytics
 import search
+import reports
 
 print("""
 ====================================================================================
@@ -70,6 +71,8 @@ while True:
         analytics.sales_manager()
     elif user_option in ("7", "search"):
         search.search()
+    elif user_option in ("8", "report"):
+        reports.report()
     
             
             
