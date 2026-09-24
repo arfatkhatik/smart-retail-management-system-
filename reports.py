@@ -20,6 +20,8 @@ def report():
         sales_report()
     elif user_option in ("2", "inventory report"):
         inventory_report()
+    elif user_option in ("3", "customer report"):
+        customer_report()
 
 
 def sales_report():
@@ -95,3 +97,37 @@ def inventory_report():
 
         ========================================
 """)
+
+
+def customer_report():
+    orders = storage.load_orders()
+    customers = storage.load_customers()
+
+    total_customers = len(customers)
+    total_orders = len(orders)
+
+    active_customers = set()
+    total_unit_purchased = 0
+    total_customer_spend = 0
+
+    for order in orders:
+        active_customers.add(order["customer_id"])
+        for item in order["items"]:
+            total_unit_purchased += item["quantity"]
+            total_customer_spend += item["price"] * item["quantity"]
+    active_customers = len(active_customers)
+
+    print(f"""
+        ========================================
+                    CUSTOMER REPORT
+        ========================================
+
+        Total Customers       : {total_customers}
+        Customers With Orders : {active_customers}
+        Total Orders          : {total_orders}
+        Total Units Purchased : {total_unit_purchased}
+        Total Customer Spend  : ₹{total_customer_spend}
+
+        ========================================
+
+        """)
