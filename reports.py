@@ -18,6 +18,8 @@ def report():
     user_option = input("Enter your option: ").lower().strip()
     if user_option in ("1", "sales report"):
         sales_report()
+    elif user_option in ("2", "inventory report"):
+        inventory_report()
 
 
 def sales_report():
@@ -36,7 +38,7 @@ def sales_report():
         for item in order["items"]:
             sold_quantity = item["quantity"]
             total_unit += sold_quantity
-            
+
     avg_order_value = total_revenue / total_orders
         
 
@@ -49,6 +51,47 @@ def sales_report():
             Total Units Sold   : {total_unit}
             Total Revenue      : ₹{total_revenue}
             Average Order Value: ₹{avg_order_value}
+
+        ========================================
+""")
+
+
+def inventory_report():
+    products = storage.load_products()
+    if not products:
+        print("No products found.")
+        return
+
+    total_products = len(products)
+    total_stock_units = 0
+    low_stock_units = 0
+    out_of_stock = 0
+    total_inventory_value = 0
+    for product in products:
+        total = product["stock quantity"]
+        total_stock_units += total
+
+        total_price = product["purchase price"] * product["stock quantity"]
+        total_inventory_value += total_price
+
+        if product["stock quantity"] <= product["minimum stock"]:
+            low_stock_units += 1
+
+        if product["stock quantity"] == 0:
+            out_of_stock += 1
+            
+
+
+    print(f"""
+        ========================================
+                  INVENTORY REPORT
+        ========================================
+
+        Total Products        : {total_products}
+        Total Stock Units     : {total_stock_units}
+        Low Stock Products    : {low_stock_units}
+        Out-of-Stock Products : {out_of_stock}
+        Total Inventory Value : ₹{total_inventory_value}
 
         ========================================
 """)
