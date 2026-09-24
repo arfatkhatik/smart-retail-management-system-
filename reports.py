@@ -24,6 +24,11 @@ def report():
         customer_report()
     elif user_option in ("4", "profit report"):
         profit_report()
+    elif user_option in ("5", "back to main menu"):
+        return
+    else:
+        print("Invalid option.")
+        
 
 
 def sales_report():
