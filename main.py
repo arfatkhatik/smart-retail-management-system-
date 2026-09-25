@@ -50,8 +50,7 @@ print("""
     6. sales & analytics
     7. search
     8. report
-    9. setting 
-    10.exit
+    9. exit 
 
 =====================================================================================
 """)
@@ -73,6 +72,11 @@ while True:
         search.search()
     elif user_option in ("8", "report"):
         reports.report()
+    elif user_option in ("9", "exit"):
+        print("Thank you for using Smart Retail Management System. Goodbye!")
+    else:
+        print("Invalid option selected.")
+        
     
             
             
